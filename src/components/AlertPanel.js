@@ -1,24 +1,25 @@
-// src/components/AlertPanel.js
-
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import AlertCard from "./AlertCard";
 
 const AlertPanel = ({ alerts }) => {
-  // 🔥 sort critical first
-  const sortedAlerts = [...alerts].sort((a, b) => {
-    if (a.severity === "critical") return -1;
-    if (b.severity === "critical") return 1;
-    return 0;
-  });
 
-  // 🔥 notify for critical alerts
+  // ✅ memoized sorting (best practice)
+  const sortedAlerts = useMemo(() => {
+    return [...alerts].sort((a, b) => {
+      if (a.severity === "critical") return -1;
+      if (b.severity === "critical") return 1;
+      return 0;
+    });
+  }, [alerts]);
+
+  // ✅ now dependency is correct
   useEffect(() => {
     sortedAlerts.forEach((alert) => {
       if (alert.severity === "critical") {
         console.log("🚨 Critical Alert:", alert.message);
       }
     });
-  }, [alerts]);
+  }, [sortedAlerts]);
 
   return (
     <div>
