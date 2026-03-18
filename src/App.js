@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+
+import { useEffect, useState } from "react";
+import TruckList from "./components/TruckList";
+import AlertPanel from "./components/AlertPanel";
+import { getWeatherAlerts } from "./services/weatherService";
 
 function App() {
+  const [alerts, setAlerts] = useState([]);
+
+  const trucks = ["TRUCK-1", "TRUCK-2", "TRUCK-3"];
+
+  // 🔥 auto refresh every 5 sec
+  useEffect(() => {
+    const fetchAlerts = () => {
+      const data = getWeatherAlerts();
+      setAlerts(data);
+    };
+
+    fetchAlerts();
+
+    const interval = setInterval(fetchAlerts, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{ padding: "20px" }}>
+      <h2>🌦️ Weather Alert System</h2>
+
+      <TruckList trucks={trucks} />
+      <AlertPanel alerts={alerts} />
     </div>
   );
 }

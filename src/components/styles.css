@@ -1,0 +1,115 @@
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+}
+
+/* Container */
+.app-container {
+  padding: 20px 40px;
+}
+
+/* Header */
+.header {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Card */
+.card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Table */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  font-size: 13px;
+  color: #888;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.table td {
+  padding: 12px 10px;
+  font-size: 14px;
+}
+
+.table tr:hover {
+  background: #fafafa;
+}
+
+/* Badge */
+.badge {
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badge.active {
+  background: #e6f4ea;
+  color: #1e7e34;
+}
+
+.badge.inactive {
+  background: #fdecea;
+  color: #c82333;
+}
+
+/* Alerts */
+.alert-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alert-card {
+  padding: 14px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 5px solid;
+}
+
+.alert-card.warning {
+  background: #fff8e1;
+  border-color: #ffc107;
+}
+
+.alert-card.error {
+  background: #fdecea;
+  border-color: #dc3545;
+}
+
+.alert-card.info {
+  background: #e7f3ff;
+  border-color: #007bff;
+}
+
+.alert-card p {
+  margin: 0;
+  font-size: 14px;
+}
+
+.time {
+  font-size: 12px;
+  color: #777;
+}
